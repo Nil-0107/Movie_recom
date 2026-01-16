@@ -9,19 +9,12 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from fastapi import Request
-
 
 
 # =========================
 # ENV
 # =========================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-load_dotenv(os.path.join(BASE_DIR, ".env"))
-
+load_dotenv()
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
 TMDB_BASE = "https://api.themoviedb.org/3"
@@ -36,13 +29,11 @@ if not TMDB_API_KEY:
 # FASTAPI APP
 # =========================
 app = FastAPI(title="Movie Recommender API", version="3.0")
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
-
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000"],
+    allow_origins=["*"],  # for local streamlit
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -484,9 +475,3 @@ async def search_bundle(
         genre_recommendations=genre_recs,
     )
     
-@app.get("/", response_class=HTMLResponse)
-def serve_frontend(request: Request):
-    return templates.TemplateResponse(
-        "index.html",
-        {"request": request}
-    )
