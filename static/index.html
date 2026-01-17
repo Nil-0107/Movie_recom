@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1 onclick="goHome()" style="cursor: pointer;">🎬 Movie Recommender</h1>
+            <nav>
+                <button class="nav-btn" onclick="goHome()">Home</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search Section -->
+        <section id="search-section">
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Type: avenger, batman, love..." autocomplete="off">
+                <div id="search-suggestions" class="suggestions-dropdown hidden"></div>
+            </div>
+            <p class="helper-text">Type keyword → dropdown suggestions + matching results → open → details + recommendations</p>
+        </section>
+
+        <!-- Dynamic Content Area -->
+        <div id="content-area">
+            <!-- Content will be injected here -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
