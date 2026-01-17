@@ -1,6 +1,6 @@
 # Movie Recommender System
 
-A full-stack movie recommendation application that combines content-based filtering (TF-IDF) with genre-based discovery. The system features a **FastAPI** backend for serving recommendations and movie data, and a **Streamlit** frontend for an interactive user experience.
+A full-stack movie recommendation application that combines content-based filtering (TF-IDF) with genre-based discovery. This is my first project! The system features a **FastAPI** backend for serving recommendations and movie data, and a **Streamlit** frontend for an interactive user experience.
 
 ## Features
 
